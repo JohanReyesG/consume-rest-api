@@ -7,11 +7,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const SECRET_KEY = 'your-secret-key'; // Cambia esto por una clave segura en un entorno de producción
-const TOKEN_EXPIRATION = '30s'; // El token expirará en 30 minutos
+const SECRET_KEY = 'secret';
+const TOKEN_EXPIRATION = '5m';
 
 
-// Middleware de autenticación JWT
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
@@ -24,11 +23,10 @@ function authenticateToken(req, res, next) {
     });
 }
 
-// Ruta de inicio de sesión
+
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    // Verificar si las credenciales coinciden con el usuario "quemado" esperado
     if (username === 'admin' && password === 'password') {
         const accessToken = jwt.sign({ username: 'admin' }, SECRET_KEY, { expiresIn: TOKEN_EXPIRATION });
         return res.json({ accessToken: accessToken });
@@ -37,11 +35,6 @@ app.post('/login', (req, res) => {
     }
 });
 
-
-// Ruta protegida
-app.get('/protected', authenticateToken, (req, res) => {
-    res.json({ message: 'Ruta protegida' });
-});
 
 app.get('/users', authenticateToken, async (req, res) => {
     try {
