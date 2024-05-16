@@ -1,0 +1,16 @@
+{
+    "name": "my-project",
+    "private": true,
+    "workspaces": [
+        "backend",
+        "frontend"
+    ],
+    "scripts": {
+        "start": "npm-run-all --parallel start:backend start:frontend",
+        "start:backend": "cd backend && npm start",
+        "start:frontend": "cd frontend && npm start"
+    },
+    "devDependencies": {
+        "npm-run-all": "^4.1.5"
+    }
+}
