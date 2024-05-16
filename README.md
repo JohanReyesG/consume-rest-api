@@ -24,6 +24,10 @@ npm install -w backend
 
 npm install -w frontend
 
+### Dependencias adicionales
+
+npm install
+
 ## Ejecución
 
 Una vez que hayas instalado las dependencias, puedes ejecutar el proyecto:
