@@ -33,3 +33,9 @@ npm install
 Una vez que hayas instalado las dependencias, puedes ejecutar el proyecto:
 
     npm run start
+    El servidor backend se ejecutará en el puerto 3001.
+    El servidor frontend se ejecutará en el puerto 3000 por defecto. Puedes acceder a él en tu navegador usando la URL: `http://localhost:3000`.
+
+    
+
+
