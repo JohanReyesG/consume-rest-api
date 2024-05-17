@@ -45,7 +45,7 @@ app.get('/users', authenticateToken, async (req, res) => {
     }
 });
 
-app.post('/users', async (req, res) => {
+app.post('/users', authenticateToken, async (req, res) => {
     try {
         const user = req.body;
         const newUser = await createUser(user);
@@ -55,7 +55,7 @@ app.post('/users', async (req, res) => {
     }
 });
 
-app.delete('/users/:id', async (req, res) => {
+app.delete('/users/:id', authenticateToken, async (req, res) => {
     try {
         const id = req.params.id;
         await deleteUser(id);
@@ -65,7 +65,7 @@ app.delete('/users/:id', async (req, res) => {
     }
 });
 
-app.put('/users/:id', async (req, res) => {
+app.put('/users/:id', authenticateToken, async (req, res) => {
     try {
         const id = req.params.id;
         const user = req.body;
