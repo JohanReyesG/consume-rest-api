@@ -34,7 +34,11 @@ export const createUser = async(userData) => {
         });
         return response.data;
     } catch (error) {
-        throw new Error('Error al crear usuario');
+        const err = JSON.stringify({
+            data: error.response.data,
+            status: error.response.status
+        });
+        throw new Error(err);
     }
 };
 
@@ -47,7 +51,11 @@ export const deleteUser = async(userId) => {
             }
         });
     } catch (error) {
-        throw new Error('Error al eliminar usuario');
+        const err = JSON.stringify({
+            data: error.response.data,
+            status: error.response.status
+        });
+        throw new Error(err);
     }
 };
 
@@ -61,6 +69,10 @@ export const updateUser = async(userId, userData) => {
         });
         return response.data;
     } catch (error) {
-        throw new Error('Error al actualizar usuario');
+        const err = JSON.stringify({
+            data: error.response.data,
+            status: error.response.status
+        });
+        throw new Error(err);
     }
 };
