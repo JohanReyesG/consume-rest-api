@@ -1,6 +1,5 @@
 const axios = require('axios');
 
-// Función para obtener posts desde la API externa
 async function getUsers() {
     try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/users');
